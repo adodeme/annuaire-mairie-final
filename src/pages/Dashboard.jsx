@@ -7,6 +7,7 @@ import {
 } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import api from "../services/api";
+import { Link } from "react-router-dom";
 
 export default function Dashboard() {
         const [user, setUser] = useState(null);
@@ -88,9 +89,12 @@ export default function Dashboard() {
 
               </div>
 
-              <button className="mt-6 bg-blue-600 text-white px-5 py-2 rounded-lg">
-                Modifier mon profil
-              </button>
+              <Link
+                to="/dashboard/profile"
+                className="inline-block mt-6 bg-blue-600 text-white px-5 py-2 rounded-lg"
+                >
+                Voir mon profil
+                </Link>
 
             </div>
 

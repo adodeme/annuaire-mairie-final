@@ -99,7 +99,7 @@ export default function Admin() {
               <FaNewspaper className="text-4xl text-purple-600 mb-3" />
 
               <h2 className="text-3xl font-bold">
-                0
+                6
               </h2>
 
               <p>Actualités</p>

@@ -1,6 +1,27 @@
 import DashboardLayout from "../layouts/DashboardLayout";
+import { useEffect, useState } from "react";
+import api from "../services/api";
 
 export default function Profile() {
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+
+    api.get("/me")
+      .then((res) => {
+        setUser(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+  }, []);
+
+  if (!user) {
+    return <div className="p-10">Chargement...</div>;
+  }
+
   return (
     <DashboardLayout>
 
@@ -12,37 +33,92 @@ export default function Profile() {
 
         <div className="grid md:grid-cols-2 gap-6">
 
-          <input
-            placeholder="Nom"
-            className="border p-3 rounded-lg"
-          />
+          <div>
+            <label className="font-semibold">
+              Nom
+            </label>
 
-          <input
-            placeholder="Téléphone"
-            className="border p-3 rounded-lg"
-          />
+            <input
+              value={user.name || ""}
+              readOnly
+              className="border p-3 rounded-lg w-full"
+            />
+          </div>
 
-          <input
-            placeholder="Secteur"
-            className="border p-3 rounded-lg"
-          />
+          <div>
+            <label className="font-semibold">
+              Email
+            </label>
 
-          <input
-            placeholder="Métier"
-            className="border p-3 rounded-lg"
-          />
+            <input
+              value={user.email || ""}
+              readOnly
+              className="border p-3 rounded-lg w-full"
+            />
+          </div>
+
+          <div>
+            <label className="font-semibold">
+              Téléphone
+            </label>
+
+            <input
+              value={user.profile?.phone || ""}
+              readOnly
+              className="border p-3 rounded-lg w-full"
+            />
+          </div>
+
+          <div>
+            <label className="font-semibold">
+              Ville
+            </label>
+
+            <input
+              value={user.profile?.location || ""}
+              readOnly
+              className="border p-3 rounded-lg w-full"
+            />
+          </div>
+
+          <div>
+            <label className="font-semibold">
+              Secteur
+            </label>
+
+            <input
+              value={user.profile?.sector || ""}
+              readOnly
+              className="border p-3 rounded-lg w-full"
+            />
+          </div>
+
+          <div>
+            <label className="font-semibold">
+              Métier
+            </label>
+
+            <input
+              value={user.profile?.job || ""}
+              readOnly
+              className="border p-3 rounded-lg w-full"
+            />
+          </div>
 
         </div>
 
-        <textarea
-          placeholder="Biographie"
-          className="border p-3 rounded-lg w-full mt-6"
-          rows="5"
-        />
+        <div className="mt-6">
+          <label className="font-semibold">
+            Biographie
+          </label>
 
-        <button className="mt-6 bg-blue-600 text-white px-5 py-3 rounded-lg">
-          Enregistrer
-        </button>
+          <textarea
+            value={user.profile?.bio || ""}
+            readOnly
+            rows="5"
+            className="border p-3 rounded-lg w-full"
+          />
+        </div>
 
       </div>
 
