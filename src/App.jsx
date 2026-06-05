@@ -16,7 +16,7 @@ function App() {
 
   return (
 
-    <HashRouter>
+    <BrowserRouter>
 
       <Routes>
 
@@ -67,7 +67,7 @@ function App() {
 
       </Routes>
 
-    </HashRouter>
+    </BrowserRouter>
 
   );
 }
