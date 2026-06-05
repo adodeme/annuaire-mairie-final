@@ -26,11 +26,11 @@ export default function Login() {
 
             if (res.data.user.role === "admin") {
 
-                window.location.href = "/admin";
+                window.location.href = "/#/admin";
 
             } else {
 
-                window.location.href = "/dashboard";
+                window.location.href = "/#/dashboard";
 
             }
 

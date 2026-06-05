@@ -10,7 +10,7 @@ import {
 export default function DashboardLayout({ children }) {
   const logout = () => {
     localStorage.removeItem("token");
-    window.location.href = "/";
+    window.location.href = "/#/";
   };
 
   return (

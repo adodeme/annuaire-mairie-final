@@ -37,7 +37,7 @@ export default function Register() {
 
             alert("Inscription réussie");
 
-            window.location.href = "/dashboard";
+            window.location.href = "/#/dashboard";
 
         } catch (err) {
 
