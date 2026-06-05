@@ -2,9 +2,6 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: "https://annuaire-backend-final.onrender.com/api",
-  headers: {
-    Accept: "application/json",
-  },
 });
 
 api.interceptors.request.use((config) => {
